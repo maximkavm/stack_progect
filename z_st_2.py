@@ -27,11 +27,15 @@ for i in range(n):
         Mn.add(row[j])
     A.append(row)
     vse_lang = vse_lang | Mn
-    all_lang = vse_lang ^ Mn
+    if j == 0:
+        all_lang = Mn
+    elif j > 0:
+        all_lang = vse_lang ^ Mn
 
-for i in range(len(A)):
-    print(A[i])
 
-print('Mn', Mn)
-print('all_lang', all_lang)
-print('vse_lang', vse_lang)
+print(len(all_lang))
+for m in all_lang:
+    print(m)
+print(len(vse_lang))
+for m in vse_lang:
+    print(m)
