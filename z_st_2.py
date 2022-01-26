@@ -14,28 +14,35 @@
 # список таких языков. Вывод необходимо сделать в алфавитном порядке.
 
 n = int(input())
-all_lang = set()
+
 vse_lang = set()
 A = []
 
 for i in range(n):
     Mi = int(input())
     row = [''] * Mi
-    Mn = set()
     for j in range(Mi):
+        Mn = set()
         row[j] = input()
         Mn.add(row[j])
+        vse_lang = vse_lang | Mn
     A.append(row)
-    vse_lang = vse_lang | Mn
-    if j == 0:
-        all_lang = Mn
-    elif j > 0:
-        all_lang = vse_lang ^ Mn
 
+R = vse_lang
+for i in range(n):
+    U = set()
+    for j in range(len(A[i])):
+        U.add(A[i][j])
+    R = (R & U)
 
-print(len(all_lang))
-for m in all_lang:
+print(len(R))
+b = list(R)
+b.sort()
+for m in b:
     print(m)
+
 print(len(vse_lang))
-for m in vse_lang:
+a = list(vse_lang)
+a.sort()
+for m in a:
     print(m)
